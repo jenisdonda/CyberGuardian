@@ -1,0 +1,10 @@
+requests
+schedule
+python-dotenv
+llama_index
+pymongo
+llama-index-vector-stores-mongodb
+llama-index-embeddings-openai
+llama-index-readers-web
+streamlit
+trulens_eval
