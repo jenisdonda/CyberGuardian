@@ -3,16 +3,16 @@ from pathlib import Path
 sys.path.append(Path(__file__).parent.resolve().as_posix())
 from chatbot.bot import CyberNewsBot
 from chatbot.mongo_client import CustomMongoClient
-from dotenv import load_dotenv
-from trulens_eval.feedback.provider import OpenAI
-from trulens_eval import Feedback
-import numpy as np
-from trulens_eval import Tru
-from trulens_eval.app import App
-load_dotenv("./.env")
-from trulens_eval import TruLlama
-from trulens_eval.feedback import Groundedness
-import pymongo
+# from dotenv import load_dotenv
+# from trulens_eval.feedback.provider import OpenAI
+# from trulens_eval import Feedback
+# import numpy as np
+# from trulens_eval import Tru
+# from trulens_eval.app import App
+# load_dotenv("./.env")
+# from trulens_eval import TruLlama
+# from trulens_eval.feedback import Groundedness
+# import pymongo
 from chatbot.mongo_client import CustomMongoClient
 from chatbot import logger_manager as lm
 from config import *
