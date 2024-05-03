@@ -1,5 +1,6 @@
 from config import *
 from llama_index.llms.openai import OpenAI
+from llama_index.llms.together import TogetherLLM
 from chatbot.mongo_client import CustomMongoClient
 from dotenv import load_dotenv
 import chatbot.logger_manager as lm
@@ -22,7 +23,7 @@ class CyberNewsBot:
         -------
         OpenAI: An instance of the OpenAI class with the specified model and temperature.
         """
-        return OpenAI(model = OPENAI_MODEL, temperature=OPENAI_TEMPERATURE)
+        return TogetherLLM(model=TOGETHER_AI_MODEL)
 
     def merge_vectors_into_string(self, all_vectors):
         """

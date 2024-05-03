@@ -1,4 +1,6 @@
-from llama_index.embeddings.openai import OpenAIEmbedding
+# from llama_index.embeddings.openai import OpenAIEmbedding
+from llama_index.embeddings.together import TogetherEmbedding
+from llama_index.llms.together import TogetherLLM
 import pymongo
 from llama_index.core.settings import Settings
 from llama_index.core import Document
@@ -36,8 +38,8 @@ def singleton(cls):
 class CustomMongoClient:
     def __init__(self):
         """Initializing mongo instance and also setting OpenAI model for llama_index"""
-        self.embed_model = OpenAIEmbedding(model=EMBEDDING_MODEL, dimensions = EMBEDDING_MODEL_DIMENSIONS)
-        Settings.llm = OpenAI(model = OPENAI_MODEL, temperature=OPENAI_TEMPERATURE)
+        self.embed_model = TogetherEmbedding(model_name=TOGETHER_AI_EMBEDDING_MODEL, dimensions=EMBEDDING_MODEL_DIMENSIONS)
+        Settings.llm = TogetherLLM(model=TOGETHER_AI_MODEL)
         Settings.embed_model = self.embed_model
         
         self.mongo_db_logger = lm.initialize_logger("Mongo DB", MONGO_DB_LOG_FILE_PATH)

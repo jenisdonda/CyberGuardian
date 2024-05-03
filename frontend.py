@@ -76,13 +76,14 @@ if prompt:
     with st.spinner("Please wait.."):
         try:
             response = bot.get_original_response(st.session_state[SUMMARY], prompt) # First getting original response
+            print(f"Response: {response}")
         except Exception as e:
             frontend_logger.error("Exception in original response: {0}".format(e))
             response = None
-        try:
-            trulense_records = bot.run_trulense(prompt) # Running trulens recorder
-        except Exception as e:
-            frontend_logger.error("Error in trulense: {0}".format(e))
+        # try:
+        #     trulense_records = bot.run_trulense(prompt) # Running trulens recorder
+        # except Exception as e:
+        #     frontend_logger.error("Error in trulense: {0}".format(e))
         
         if response is None:
             frontend_logger.info("No response from LLM")

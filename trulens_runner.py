@@ -17,9 +17,9 @@ from chatbot.mongo_client import CustomMongoClient
 from chatbot import logger_manager as lm
 from config import *
 
-tru = Tru()
-grounded = Groundedness(groundedness_provider=OpenAI())
-provider = OpenAI()
+# tru = Tru()
+# grounded = Groundedness(groundedness_provider=OpenAI())
+# provider = OpenAI()
 
 class TruLensRunner:
     """Class act as an interface between backend and frontend"""
@@ -45,44 +45,44 @@ class TruLensRunner:
         """
         return self.cyber_news_bot.get_response_from_llm(summary, query, self.query_engine)
 
-    def run_trulense(self, query):
-        """Function for evaluation of trulens
+    # def run_trulense(self, query):
+    #     """Function for evaluation of trulens
 
-        Parameters
-        ----------
-        query : Input query from user
+    #     Parameters
+    #     ----------
+    #     query : Input query from user
 
-        Returns
-        -------
-        Recordings done by the trulens
-        """
-        try:
-            query_engine = self.query_engine
-            context = App.select_context(query_engine)
+    #     Returns
+    #     -------
+    #     Recordings done by the trulens
+    #     """
+    #     try:
+    #         query_engine = self.query_engine
+    #         context = App.select_context(query_engine)
 
-            f_groundedness = (
-                Feedback(grounded.groundedness_measure_with_cot_reasons)
-                .on(context.collect()) # collect context chunks into a list
-                .on_output()
-                .aggregate(grounded.grounded_statements_aggregator)
-            )
-            f_context_relevance = (
-                Feedback(provider.context_relevance_with_cot_reasons)
-                .on_input()
-                .on(context)
-                .aggregate(np.mean)
-            )
-            f_answer_relevance = (
-                Feedback(provider.relevance)
-                .on_input_output()
-            )
+    #         f_groundedness = (
+    #             Feedback(grounded.groundedness_measure_with_cot_reasons)
+    #             .on(context.collect()) # collect context chunks into a list
+    #             .on_output()
+    #             .aggregate(grounded.grounded_statements_aggregator)
+    #         )
+    #         f_context_relevance = (
+    #             Feedback(provider.context_relevance_with_cot_reasons)
+    #             .on_input()
+    #             .on(context)
+    #             .aggregate(np.mean)
+    #         )
+    #         f_answer_relevance = (
+    #             Feedback(provider.relevance)
+    #             .on_input_output()
+    #         )
 
-            tru_query_engine_recorder = TruLlama(query_engine, app_id=APP_NAME, feedbacks=[f_groundedness, f_answer_relevance, f_context_relevance])
+    #         tru_query_engine_recorder = TruLlama(query_engine, app_id=APP_NAME, feedbacks=[f_groundedness, f_answer_relevance, f_context_relevance])
 
-            #initiating trulens recording
-            with tru_query_engine_recorder as recording:
-                self.custom_mongo_client.run_query_engine(query_engine, query)
-            return recording.records
+    #         #initiating trulens recording
+    #         with tru_query_engine_recorder as recording:
+    #             self.custom_mongo_client.run_query_engine(query_engine, query)
+    #         return recording.records
 
-        except Exception as e:
-            self.truelens_logger.error(e)
+    #     except Exception as e:
+    #         self.truelens_logger.error(e)

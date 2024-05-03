@@ -3,15 +3,14 @@ import os
 
 CURRENT_DIRECTORY = Path(__file__).parent.resolve()
 APP_NAME="CyberGuardian"
-OPENAI_MODEL = "gpt-4-turbo"
-OPENAI_TEMPERATURE = 0
+TOGETHER_AI_MODEL = "meta-llama/Llama-3-70b-chat-hf"
+TOGETHER_AI_EMBEDDING_MODEL = "togethercomputer/m2-bert-80M-8k-retrieval"
 RESCHEDULE_HOURS = 1
 STATE_FILE_PATH = Path.joinpath(CURRENT_DIRECTORY, "data/state.json")
 MONGO_URI = "mongodb+srv://crestai:crest123@cluster1.nyahtop.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1"
 INDEX_NAME = "vector_index"
 DB_NAME = "cyber_news_db"
-COLLECTION_NAME = "cyber_news_collection_open_ai"
-EMBEDDING_MODEL = "text-embedding-3-small"
+COLLECTION_NAME = "cyber_news_collection2"
 RUN_LLM_LOG_FILE_PATH = Path.joinpath(CURRENT_DIRECTORY, "logs/run_llm.log")
 MONGO_DB_LOG_FILE_PATH = Path.joinpath(CURRENT_DIRECTORY, "logs/mongo_client.log")
 SCHEDULAR_LOG_PATH = Path.joinpath(CURRENT_DIRECTORY, "logs/scheduling.log")
