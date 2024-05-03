@@ -1,5 +1,5 @@
 from config import *
-from llama_index.llms.openai import OpenAI
+# from llama_index.llms.openai import OpenAI
 from llama_index.llms.together import TogetherLLM
 from chatbot.mongo_client import CustomMongoClient
 from dotenv import load_dotenv
