@@ -7,7 +7,7 @@ OPENAI_MODEL = "gpt-4-turbo"
 OPENAI_TEMPERATURE = 0
 RESCHEDULE_HOURS = 1
 STATE_FILE_PATH = Path.joinpath(CURRENT_DIRECTORY, "data/state.json")
-MONGO_URI = "mongodb+srv://crestai:crest123@cluster1.nyahtop.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1"
+MONGO_URI = "mongodb+srv://username:password@cluster1.nyahtop.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1"
 INDEX_NAME = "vector_index"
 DB_NAME = "cyber_news_db"
 COLLECTION_NAME = "cyber_news_collection_open_ai"
