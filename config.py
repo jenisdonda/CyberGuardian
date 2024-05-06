@@ -7,7 +7,7 @@ TOGETHER_AI_MODEL = "meta-llama/Llama-3-70b-chat-hf"
 TOGETHER_AI_EMBEDDING_MODEL = "togethercomputer/m2-bert-80M-8k-retrieval"
 RESCHEDULE_HOURS = 1
 STATE_FILE_PATH = Path.joinpath(CURRENT_DIRECTORY, "data/state.json")
-MONGO_URI = "mongodb+srv://username:password@cluster1.nyahtop.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1"
+MONGO_URI = f"mongodb+srv://{os.getenv("MONGO_USERNAME")}:{os.getenv("MONGO_PASSWORD")}@cluster1.nyahtop.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1"
 INDEX_NAME = "vector_index"
 DB_NAME = "cyber_news_db"
 COLLECTION_NAME = "cyber_news_collection2"
